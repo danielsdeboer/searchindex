@@ -221,16 +221,14 @@ $query =
                 'size' => 500,
                 'query' =>
                     [
-                        'fuzzy_like_this' =>
-                            [
-                                '_all' =>
-                                    [
-                                        'like_text' => 'look for this',
-                                        'fuzziness' => 0.5,
-                                    ],
-                            ],
+                        'multi_match' => 
+                    	    [
+                                'fields' => '_all',
+                        	'query' => 'look for this',
+                        	'fuzziness' => 'AUTO'
+                    	    ],
                     ],
-            ]
+            ],
     ];
 ```
 The search results that come back are simply elasticsearch response elements
